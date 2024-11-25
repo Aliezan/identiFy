@@ -36,8 +36,13 @@ const ProfileButton: FC<ProfileButtonProps> = ({ session }) => (
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent>
-      <DropdownMenuLabel>{session?.user?.name}</DropdownMenuLabel>
-      <DropdownMenuLabel className='text-tiny font-normal'>
+      <DropdownMenuLabel data-testid='user-name'>
+        {session?.user?.name}
+      </DropdownMenuLabel>
+      <DropdownMenuLabel
+        data-testid='user-email'
+        className='text-tiny font-normal'
+      >
         {session?.user?.email}
       </DropdownMenuLabel>
       <DropdownMenuSeparator />

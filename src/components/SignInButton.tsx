@@ -5,6 +5,7 @@ import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@nextui-org/button';
 import Image from 'next/image';
+import { toast } from 'sonner';
 
 const SignInButton: FC = () => {
   const router = useRouter();
@@ -18,8 +19,16 @@ const SignInButton: FC = () => {
       if (!res?.error) {
         router.push(callbackUrl);
       }
+
+      if (res?.error) {
+        toast.error('An error occurred during sign-in');
+        console.log('An error occured during sign-in', res.error);
+      }
     } catch (err) {
-      throw new Error('An error occured during sign-in');
+      if (err instanceof Error) {
+        toast.error('Unexpected error occurred during sign-in');
+        console.error('Unexpected error occured during sign-in', err.message);
+      }
     }
   };
 

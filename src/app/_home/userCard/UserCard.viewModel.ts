@@ -1,8 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-restricted-syntax */
-
 import { useSession } from 'next-auth/react';
 import { toast } from 'sonner';
 import useGetTopTracks from '@/server/topTracks/queries';
@@ -125,10 +120,10 @@ const UserCardViewModel = () => {
     } catch (err) {
       if (err instanceof Error) {
         console.error('Unexpected error:', err.message);
-        toast.error(`Unexpected error: ${err.message}`);
+        toast.error('Unexpected error occurred');
       } else {
-        console.error('An unknown error occurred:', err);
-        toast.error(`An unknown error occurred: ${err}`);
+        console.error('An unknown error occurred', err);
+        toast.error('An unknown error occurred');
       }
     }
   };
